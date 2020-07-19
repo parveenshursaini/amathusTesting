@@ -66,11 +66,7 @@ public class ALoginPage extends BaseClass{
 		  
 		createbutton.click();
 		
-		Set<String> handles=driver.getWindowHandles();
-		int n=handles.size()-1;
-		System.out.println("number of popups = "+n);
-		if(n==0)
-		{
+		
 			firstname.sendKeys("John");
 			lastname.sendKeys("deer");
 			subscribetick.click();
@@ -79,7 +75,7 @@ public class ALoginPage extends BaseClass{
 			confirmpassword.sendKeys("Test@12345");
 		    submit.click();
 			
-		}
+		
 		return confirmation.getText();
 	}
 		public AHomePage verifylogin(String uname,String pass) {
