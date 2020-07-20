@@ -1,6 +1,9 @@
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
+
+import com.amathus.pages.AHomePage;
+
 import org.testng.annotations.BeforeMethod;
 import org.testng.Assert;
 import org.testng.AssertJUnit;
@@ -12,6 +15,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.FindBy;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
@@ -43,43 +47,49 @@ public class TestAmathus {
 		WebElement location=driver.findElement(By.xpath("//a[@href='https://m2-themedemo.redboxdemo.cloud/b2c/stores/']"));
 		Assert.assertEquals(location.isDisplayed(), true);
 	}
-	@Test
-	public void verifyregistration() {
-		driver.findElement(By.xpath("//a[@href='https://m2-themedemo.redboxdemo.cloud/b2c/customer/account/']")).click();
-		Set handles=driver.getWindowHandles();
-		int n=handles.size()-1;
-		System.out.println("number of popups = "+n);
-		if(n==0) {
-			driver.findElement(By.xpath("//input[@id='firstname']")).sendKeys("John");
-			driver.findElement(By.xpath("//input[@id='lastname']")).sendKeys("deer");
-			driver.findElement(By.xpath("//input[@id='is_subscribed']")).click();
-			
-			
-			driver.findElement(By.xpath("i//nput[@id='mail_address']")).sendKeys("zammetosari-8147@yopmail.com");
-			driver.findElement(By.xpath("//input[@id='password']")).sendKeys("test123");
-			driver.findElement(By.xpath("//input[@id='password-confirmation']")).sendKeys("test123");
-			driver.findElement(By.xpath("//button[@title='Create an Account']")).click();
-			
-			
-		}
-			
-			
+	@Test()
+	public void verifyRegistration() throws InterruptedException {
 		
-	}
-		
+		  driver.findElement(By.xpath("//a[@href='https://m2-themedemo.redboxdemo.cloud/b2c/customer/account/']")).click(); 
+		/*
+		 * Set handles=driver.getWindowHandles(); int n=handles.size()-1;
+		 * System.out.println("number of popups = "+n); if(n==0) {
+		 */
+		  driver.findElement(By.xpath("//input[@id='firstname']")).sendKeys("John");
+		  driver.findElement(By.xpath("//input[@id='lastname']")).sendKeys("deer");
+		  driver.findElement(By.xpath("//input[@id='is_subscribed']")).click();
+		  
+		  driver.navigate().to("http://www.yopmail.com/en/email-generator.php");
+		  String emailid=driver.findElement(By.xpath("//input[@id='login']")).getText();
+		  driver.findElement(By.xpath("i//nput[@id='mail_address']")).sendKeys(emailid);
+		  driver.findElement(By.xpath("//input[@id='password']")).sendKeys("test123");
+		  driver.findElement(By.xpath("//input[@id='password-confirmation']")).sendKeys
+		  ("test123");
+		  driver.findElement(By.xpath("//button[@title='Create an Account']")).click();
+		  }
 	
-	
+		  @Test()
+	      public void verifylogin() throws InterruptedException	{ 
+				driver.findElement(By.xpath("//a[@href='https://m2-themedemo.redboxdemo.cloud/b2c/customer/account/']")).click();
+				Thread.sleep(2000);
+				
+				driver.findElement(By.xpath("//input[@id='email'and @name='login[username]']")).sendKeys("efasozette-3293@yopmail.com");
+				
+				driver.findElement(By.xpath("//input[@id='pass'and @name='login[password]']")).sendKeys("Test@12345");
+				
+				driver.findElement(By.xpath("//button[@id='send2'and @class='action login primary']")).click();
+				
+				String text=driver.findElement(By.xpath("//span[@class='base']")).getText();
+			
+				Assert.assertEquals(text, "MY ACCOUNT");
+		  }
+			
 	@AfterClass
 	public void tearDown() {
 		//driver.quit();
 		
 	}
 	
-	
-	
-	
-	
-
 }
 
 

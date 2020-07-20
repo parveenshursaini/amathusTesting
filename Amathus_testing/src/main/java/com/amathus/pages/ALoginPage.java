@@ -1,7 +1,5 @@
 package com.amathus.pages;
 
-import java.util.Set;
-
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -43,10 +41,9 @@ public class ALoginPage extends BaseClass{
 	WebElement signin;
 	
 	//Initializing the Page Objects:
-			public ALoginPage()
-			{
-				PageFactory.initElements(driver, this);
-			}
+	public ALoginPage(){
+	PageFactory.initElements(driver, this);
+	}
 	//Action methods
 	public String verifyTitleTest() {
 		return driver.getTitle();
@@ -57,27 +54,26 @@ public class ALoginPage extends BaseClass{
 	public boolean verifylocationlink() {
 		return location.isDisplayed();
 	}
-	public String verifyregistration() throws InterruptedException {
-		account.click();
-		
-		Thread.sleep(3000);
-		
-		agepopup.click();
-		  
-		createbutton.click();
-		
-		
-			firstname.sendKeys("John");
-			lastname.sendKeys("deer");
-			subscribetick.click();
-			email.sendKeys("efasozette-3293@yopmail.com");
-			password.sendKeys("Test@12345");
-			confirmpassword.sendKeys("Test@12345");
-		    submit.click();
-			
-		
-		return confirmation.getText();
-	}
+
+	
+	  public String verifyregistration() throws InterruptedException {
+	  account.click();
+	  
+	  Thread.sleep(3000);
+	  
+	  agepopup.click();
+	  
+	  createbutton.click();
+	  
+	  
+	  firstname.sendKeys("John"); lastname.sendKeys("deer"); subscribetick.click();
+	  email.sendKeys("efasozette-3293@yopmail.com");
+	  password.sendKeys("Test@12345"); confirmpassword.sendKeys("Test@12345");
+	  submit.click();
+	  
+	  
+	  return confirmation.getText(); }
+	 
 		public AHomePage verifylogin(String uname,String pass) {
 			account.click();
 			enteremail.sendKeys(uname);

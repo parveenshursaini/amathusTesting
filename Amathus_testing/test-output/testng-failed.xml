@@ -3,17 +3,17 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.amathus.testcases.ALoginPageTest">
+      <class name="TestAmathus">
         <methods>
           <include name="setUp"/>
-          <include name="loginPageTitleTest"/>
-          <include name="locationTest"/>
-          <include name="loginTest"/>
-          <include name="registrationTest"/>
+          <include name="verifylogoTest"/>
           <include name="tearDown"/>
-          <include name="logoTest"/>
+          <include name="verifyRegistration"/>
+          <include name="verifylocationlink"/>
+          <include name="verifyTitleTest"/>
+          <include name="verifylogin"/>
         </methods>
-      </class> <!-- com.amathus.testcases.ALoginPageTest -->
+      </class> <!-- TestAmathus -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
